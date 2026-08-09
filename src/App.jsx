@@ -92,6 +92,24 @@ function App() {
           <div className="hero-photo"><img src={photo} alt="RAJDEV" /><div className="photo-caption"><strong>RAJDEV</strong><span>Digital Service Provider</span></div></div>
         </section>
 
+        {/* PREMIUM QUICK ACTIONS */}
+        <section style={{ padding: "28px 5%", background: "linear-gradient(90deg,#071d36,#102f54,#071d36)", borderTop: "1px solid rgba(255,211,78,.25)", borderBottom: "1px solid rgba(255,211,78,.25)" }}>
+          <div style={{ maxWidth: 1150, margin: "auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 14 }}>
+            {[
+              ["⚡", "Fast Service", "तेज़ ऑनलाइन कार्य"],
+              ["🔒", "Trusted Point", "भरोसेमंद सेवा"],
+              ["💬", "WhatsApp Apply", "सीधे आवेदन करें"],
+              ["📞", "Quick Support", "Call / WhatsApp सहायता"],
+            ].map(([icon, title, text]) => (
+              <div key={title} style={{ padding: "15px 18px", borderRadius: 16, background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.1)", textAlign: "center" }}>
+                <div style={{ fontSize: 24 }}>{icon}</div>
+                <strong style={{ display: "block", color: "#ffd34e", marginTop: 5 }}>{title}</strong>
+                <span style={{ display: "block", color: "#d5dfeb", fontSize: 12, marginTop: 4 }}>{text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="services" id="services">
           <div className="section-title"><p className="eyebrow">OUR SERVICES</p><h2>सभी सेवाएँ एक ही स्थान पर</h2><p>सरकारी, डिजिटल, प्रिंटिंग एवं फोटोग्राफी सेवाओं के लिए आज ही संपर्क करें।</p></div>
           <div className="service-search"><input type="text" placeholder="🔍 Search Service... जैसे PAN, Photo, Wedding" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
