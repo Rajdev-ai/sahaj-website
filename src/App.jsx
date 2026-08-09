@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import logo from "./assets/LOGO.JPG";
 import photo from "./assets/IMAGE.JPG";
@@ -92,19 +92,32 @@ function App() {
           <div className="hero-photo"><img src={photo} alt="RAJDEV" /><div className="photo-caption"><strong>RAJDEV</strong><span>Digital Service Provider</span></div></div>
         </section>
 
-        {/* PREMIUM QUICK ACTIONS */}
         <section style={{ padding: "28px 5%", background: "linear-gradient(90deg,#071d36,#102f54,#071d36)", borderTop: "1px solid rgba(255,211,78,.25)", borderBottom: "1px solid rgba(255,211,78,.25)" }}>
           <div style={{ maxWidth: 1150, margin: "auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 14 }}>
-            {[
-              ["⚡", "Fast Service", "तेज़ ऑनलाइन कार्य"],
-              ["🔒", "Trusted Point", "भरोसेमंद सेवा"],
-              ["💬", "WhatsApp Apply", "सीधे आवेदन करें"],
-              ["📞", "Quick Support", "Call / WhatsApp सहायता"],
-            ].map(([icon, title, text]) => (
+            {[["⚡", "Fast Service", "तेज़ ऑनलाइन कार्य"],["🔒", "Trusted Point", "भरोसेमंद सेवा"],["💬", "WhatsApp Apply", "सीधे आवेदन करें"],["📞", "Quick Support", "Call / WhatsApp सहायता"]].map(([icon,title,text]) => (
               <div key={title} style={{ padding: "15px 18px", borderRadius: 16, background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.1)", textAlign: "center" }}>
-                <div style={{ fontSize: 24 }}>{icon}</div>
-                <strong style={{ display: "block", color: "#ffd34e", marginTop: 5 }}>{title}</strong>
-                <span style={{ display: "block", color: "#d5dfeb", fontSize: 12, marginTop: 4 }}>{text}</span>
+                <div style={{ fontSize: 24 }}>{icon}</div><strong style={{ display:"block", color:"#ffd34e", marginTop:5 }}>{title}</strong><span style={{ display:"block", color:"#d5dfeb", fontSize:12, marginTop:4 }}>{text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ padding: "70px 5%", background: "#0a2341", color: "#fff" }}>
+          <div className="section-title" style={{ marginBottom: 35 }}>
+            <p className="eyebrow">HOW IT WORKS</p>
+            <h2 style={{ color: "#fff" }}>घर बैठे आवेदन करना अब आसान</h2>
+            <p style={{ color: "#cbd9e8" }}>सिर्फ 3 आसान कदमों में अपनी सेवा के लिए संपर्क करें।</p>
+          </div>
+          <div style={{ maxWidth: 1050, margin: "auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 18 }}>
+            {[
+              ["01", "सेवा चुनें", "नीचे दी गई Services में अपनी जरूरत की सेवा खोजें।"],
+              ["02", "Apply Now दबाएँ", "Service के साथ दिए WhatsApp बटन पर क्लिक करें।"],
+              ["03", "WhatsApp पर बात करें", "Message पहले से तैयार मिलेगा और आप सीधे Rajdev ji से संपर्क कर पाएँगे।"],
+            ].map(([num,title,text]) => (
+              <div key={num} style={{ padding: 25, borderRadius: 20, background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,211,78,.22)", boxShadow: "0 15px 35px rgba(0,0,0,.18)" }}>
+                <div style={{ width: 48, height: 48, borderRadius: 14, background: "#ffd34e", color: "#071d36", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 18 }}>{num}</div>
+                <h3 style={{ marginTop: 18, color: "#ffd34e" }}>{title}</h3>
+                <p style={{ marginTop: 10, color: "#d7e2ee", lineHeight: 1.7 }}>{text}</p>
               </div>
             ))}
           </div>
@@ -119,9 +132,7 @@ function App() {
             {filteredServices.map((service, index) => (
               <div className="service-card" key={`${service.category}-${service.name}`}>
                 <span className="service-number">{String(index + 1).padStart(2, "0")}</span>
-                <div style={{ flex: 1 }}><h3>{service.name}</h3><p>{service.category} Service</p>
-                  <a href={whatsappLink(service)} target="_blank" rel="noreferrer" className="btn whatsapp" style={{ display: "inline-block", padding: "9px 13px", marginTop: "10px", fontSize: "12px", borderRadius: "8px" }}>💬 Apply Now → WhatsApp</a>
-                </div>
+                <div style={{ flex: 1 }}><h3>{service.name}</h3><p>{service.category} Service</p><a href={whatsappLink(service)} target="_blank" rel="noreferrer" className="btn whatsapp" style={{ display:"inline-block", padding:"9px 13px", marginTop:"10px", fontSize:"12px", borderRadius:"8px" }}>💬 Apply Now → WhatsApp</a></div>
               </div>
             ))}
           </div>
