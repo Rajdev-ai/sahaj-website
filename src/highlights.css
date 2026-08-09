@@ -1,0 +1,27 @@
+/* SERVICE HIGHLIGHTS - Point 3 */
+.services::after {
+  content: "SERVICE HIGHLIGHTS  •  सेवा की खास बातें\A\A📋 70+ Services Available     •     🏛️ Government Services     •     💻 Digital Services\A📸 Professional Photography     •     🎥 Videography     •     🖨️ Printing & PVC Cards\A\A💬 हर सेवा के साथ Apply Now → WhatsApp से सीधे संपर्क करें";
+  white-space: pre-line;
+  display: block;
+  max-width: 1050px;
+  margin: 50px auto 0;
+  padding: 30px 24px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #102d50, #071d36);
+  border: 1px solid rgba(255, 211, 78, 0.55);
+  box-shadow: 0 18px 45px rgba(7, 29, 54, 0.22);
+  color: #dce8f5;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .services::after {
+    margin-top: 35px;
+    padding: 24px 14px;
+    font-size: 12px;
+    line-height: 1.9;
+  }
+}
