@@ -36,7 +36,7 @@ function getWhatsAppMessage(service) {
 const whatsappLink = service => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(getWhatsAppMessage(service))}`;
 
 const weddingGallery = [
-  [wedding1,"Wedding Portrait"],[wedding2,"Bridal Portrait"],[wedding3,"Bridal Look"],[wedding4,"Wedding Portrait"],[wedding5,"Wedding Couple"],[wedding6,"Wedding Couple"],[wedding8,"Wedding Couple"]
+  [wedding1,"Wedding Portrait"],[wedding2,"Bridal Portrait"],[wedding3,"Bridal Look"],[wedding4,"Wedding Portrait"],[wedding5,"Wedding Rings"],[wedding6,"Wedding Couple"],[wedding8,"Wedding Couple"]
 ];
 
 function App() {
