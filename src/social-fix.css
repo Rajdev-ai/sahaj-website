@@ -1,0 +1,60 @@
+/* Social media visibility fix */
+.navbar {
+  gap: 12px !important;
+}
+
+.nav-links {
+  gap: 14px !important;
+  flex-wrap: nowrap !important;
+}
+
+.nav-links a {
+  font-size: 14px !important;
+  white-space: nowrap !important;
+}
+
+.nav-links a[href="#social"] {
+  color: #ffd34e !important;
+  font-weight: 900 !important;
+  padding: 8px 12px !important;
+  border: 1px solid rgba(255,211,78,.55) !important;
+  border-radius: 22px !important;
+  background: rgba(255,211,78,.08) !important;
+}
+
+/* Make the existing social section prominent and easy to find */
+#social {
+  scroll-margin-top: 90px !important;
+}
+
+#social a[href*="instagram"],
+#social a[href*="facebook"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 180px !important;
+  padding: 14px 22px !important;
+  margin: 7px !important;
+  border-radius: 14px !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.22) !important;
+}
+
+@media (max-width: 1050px) {
+  .navbar {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .nav-title { margin-right: auto !important; }
+  .nav-links { order: 3 !important; width: 100% !important; justify-content: center !important; overflow-x: auto !important; padding-bottom: 4px !important; }
+}
+
+@media (max-width: 650px) {
+  .navbar { padding: 10px 4% !important; }
+  .nav-links { justify-content: flex-start !important; }
+  .nav-links a { font-size: 13px !important; }
+  .nav-whatsapp { padding: 10px 15px !important; }
+}
