@@ -1,0 +1,32 @@
+.hero::after {
+  content: "✨  BOOK YOUR SERVICE  •  सरकारी सेवाएँ  •  Photography  •  Videography  •  Printing  •  WhatsApp पर तुरंत संपर्क करें  ✨";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 22px;
+  z-index: 3;
+  padding: 13px 22px;
+  border: 1px solid rgba(255, 211, 78, .45);
+  border-radius: 999px;
+  background: rgba(4, 17, 34, .72);
+  color: #ffd34e;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media (max-width: 700px) {
+  .hero::after {
+    left: 5%;
+    right: 5%;
+    bottom: 16px;
+    padding: 11px 14px;
+    border-radius: 16px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
