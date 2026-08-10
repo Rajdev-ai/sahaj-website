@@ -48,7 +48,7 @@ function App() {
   return <div className="website">
     <nav className="navbar">
       <div className="nav-title">SAHAJ JAN SEVA KENDRA<span>& DIGITAL PHOTO STUDIO</span></div>
-      <div className="nav-links"><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#social">Social Media</a></div>
+      <div className="nav-links"><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a></div>
       <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" className="nav-whatsapp">WhatsApp</a>
     </nav>
 
@@ -84,7 +84,7 @@ function App() {
     {selectedPhoto && <div onClick={()=>setSelectedPhoto(null)} role="dialog" aria-modal="true" style={{position:"fixed",inset:0,zIndex:100000,background:"rgba(1,7,16,.92)",backdropFilter:"blur(14px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"24px"}}><button type="button" onClick={()=>setSelectedPhoto(null)} aria-label="Close" style={{position:"fixed",top:20,right:24,width:48,height:48,borderRadius:"50%",border:"1px solid rgba(255,211,78,.7)",background:"rgba(7,29,54,.9)",color:"#ffd34e",fontSize:32,cursor:"pointer",zIndex:100001}}>×</button><div onClick={e=>e.stopPropagation()} style={{width:"min(920px,94vw)",maxHeight:"92vh",display:"flex",flexDirection:"column",alignItems:"center",gap:12}}><img src={selectedPhoto.img} alt={selectedPhoto.title} style={{maxWidth:"100%",maxHeight:"78vh",objectFit:"contain",borderRadius:18,border:"2px solid rgba(255,211,78,.7)",boxShadow:"0 25px 80px rgba(0,0,0,.55)"}}/><div style={{textAlign:"center",color:"#fff"}}><strong style={{display:"block",fontSize:22,color:"#ffd34e"}}>{selectedPhoto.title}</strong><span style={{display:"block",marginTop:4,fontSize:12,letterSpacing:2,color:"#d9e4ef"}}>RAJDEV PHOTOGRAPHY</span></div></div></div>}
 
     <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" className="floating-whatsapp" aria-label="WhatsApp">💬</a>
-    <footer className="footer"><strong>SAHAJ JAN SEVA KENDRA</strong><p>& DIGITAL PHOTO STUDIO</p><p>Owner: RAJDEV | 9005714672</p><div style={{display:"flex",justifyContent:"center",gap:10,flexWrap:"wrap",margin:"14px 0"}}><a href={instagramLink} target="_blank" rel="noreferrer" style={{color:"#ffd34e",textDecoration:"none",padding:"7px 12px",border:"1px solid rgba(255,211,78,.35)",borderRadius:999}}>Instagram</a><a href={facebookLink} target="_blank" rel="noreferrer" style={{color:"#ffd34e",textDecoration:"none",padding:"7px 12px",border:"1px solid rgba(255,211,78,.35)",borderRadius:999}}>Facebook</a></div><p>© 2026 RAJDEV. All Rights Reserved.</p></footer>
+    <footer className="footer"><strong>SAHAJ JAN SEVA KENDRA</strong><p>& DIGITAL PHOTO STUDIO</p><p>Owner: RAJDEV | 9005714672</p><p>© 2026 RAJDEV. All Rights Reserved.</p></footer>
   </div>;
 }
 
