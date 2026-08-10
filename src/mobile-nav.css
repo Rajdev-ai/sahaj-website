@@ -1,22 +1,22 @@
-/* Mobile hamburger navigation - v3 */
+/* Mobile hamburger navigation - v4: overrides base responsive navbar styles */
 @media (max-width: 768px) {
-  .navbar { min-height: 68px; padding: 10px 14px; gap: 10px; }
-  .nav-title { font-size: 15px; line-height: 1.05; letter-spacing: 0.2px; flex: 1; min-width: 0; }
-  .nav-title span { font-size: 8px; margin-top: 3px; letter-spacing: 1px; }
-  .nav-whatsapp { padding: 9px 12px; font-size: 12px; white-space: nowrap; }
-  .nav-links { position: relative; width: 46px; min-width: 46px; height: 44px; margin-left: 0; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; z-index: 10001; }
-  .nav-links a { display: none; width: 100%; padding: 13px 16px; background: rgba(5,15,31,.98); border-bottom: 1px solid rgba(255,211,78,.14); color: #fff; font-size: 14px; white-space: nowrap; }
-  .nav-links a:first-child { display: flex; align-items: center; justify-content: center; width: 46px; height: 44px; padding: 0; border: 1px solid rgba(255,211,78,.55); border-radius: 12px; background: rgba(255,255,255,.06); font-size: 0; }
-  .nav-links a:first-child::before { content: "☰"; color: #ffd34e; font-size: 25px; line-height: 1; }
-  .nav-links a::after { display: none; }
-  .nav-links:focus-within { position: absolute; top: 62px; right: 14px; width: min(250px, calc(100vw - 28px)); height: auto; padding: 6px; border-radius: 16px; background: rgba(5,15,31,.98); border: 1px solid rgba(255,211,78,.45); box-shadow: 0 20px 45px rgba(0,0,0,.45); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
-  .nav-links:focus-within a { display: flex; align-items: center; }
-  .nav-links:focus-within a:first-child { width: 100%; height: auto; min-height: 42px; justify-content: flex-start; padding: 11px 14px; border: 0; border-radius: 10px; background: transparent; font-size: 14px; font-weight: 700; }
-  .nav-links:focus-within a:first-child::before { content: "✕"; font-size: 19px; margin-right: 10px; }
-  .nav-links:focus-within a:hover, .nav-links:focus-within a:focus { color: #ffd34e; background: rgba(255,211,78,.08); border-radius: 10px; outline: none; }
+  .navbar { min-height: 68px !important; padding: 10px 14px !important; gap: 10px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
+  .nav-title { width: auto !important; margin: 0 !important; text-align: left !important; font-size: 15px !important; line-height: 1.05 !important; letter-spacing: 0.2px !important; flex: 1 1 auto !important; min-width: 0 !important; }
+  .nav-title span { font-size: 8px !important; margin-top: 3px !important; letter-spacing: 1px !important; }
+  .nav-whatsapp { order: 2 !important; padding: 9px 12px !important; font-size: 12px !important; white-space: nowrap !important; }
+  .nav-links { order: 3 !important; position: relative !important; width: 46px !important; min-width: 46px !important; max-width: 46px !important; height: 44px !important; margin-left: 0 !important; display: flex !important; flex-direction: column !important; align-items: stretch !important; justify-content: flex-start !important; gap: 0 !important; z-index: 10001 !important; overflow: visible !important; padding: 0 !important; }
+  .nav-links a { display: none !important; width: 100% !important; padding: 13px 16px !important; background: rgba(5,15,31,.98) !important; border-bottom: 1px solid rgba(255,211,78,.14) !important; color: #fff !important; font-size: 14px !important; white-space: nowrap !important; }
+  .nav-links a:first-child { display: flex !important; align-items: center !important; justify-content: center !important; width: 46px !important; min-width: 46px !important; max-width: 46px !important; height: 44px !important; padding: 0 !important; border: 1px solid rgba(255,211,78,.55) !important; border-radius: 12px !important; background: rgba(255,255,255,.06) !important; font-size: 0 !important; }
+  .nav-links a:first-child::before { content: "☰" !important; color: #ffd34e !important; font-size: 25px !important; line-height: 1 !important; }
+  .nav-links a::after { display: none !important; }
+  .nav-links:focus-within { position: absolute !important; top: 62px !important; right: 14px !important; width: min(250px, calc(100vw - 28px)) !important; min-width: 0 !important; max-width: none !important; height: auto !important; padding: 6px !important; border-radius: 16px !important; background: rgba(5,15,31,.98) !important; border: 1px solid rgba(255,211,78,.45) !important; box-shadow: 0 20px 45px rgba(0,0,0,.45) !important; backdrop-filter: blur(18px) !important; -webkit-backdrop-filter: blur(18px) !important; overflow: visible !important; }
+  .nav-links:focus-within a { display: flex !important; align-items: center !important; width: 100% !important; max-width: none !important; }
+  .nav-links:focus-within a:first-child { width: 100% !important; min-width: 0 !important; max-width: none !important; height: auto !important; min-height: 42px !important; justify-content: flex-start !important; padding: 11px 14px !important; border: 0 !important; border-radius: 10px !important; background: transparent !important; font-size: 14px !important; font-weight: 700 !important; }
+  .nav-links:focus-within a:first-child::before { content: "✕" !important; font-size: 19px !important; margin-right: 10px !important; }
+  .nav-links:focus-within a:hover, .nav-links:focus-within a:focus { color: #ffd34e !important; background: rgba(255,211,78,.08) !important; border-radius: 10px !important; outline: none !important; }
 }
 @media (max-width: 430px) {
-  .nav-title { font-size: 13px; }
-  .nav-title span { font-size: 7px; letter-spacing: .7px; }
-  .nav-whatsapp { padding: 8px 10px; font-size: 11px; }
+  .nav-title { font-size: 13px !important; }
+  .nav-title span { font-size: 7px !important; letter-spacing: .7px !important; }
+  .nav-whatsapp { padding: 8px 10px !important; font-size: 11px !important; }
 }
