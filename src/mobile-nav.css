@@ -1,4 +1,4 @@
-/* Mobile hamburger navigation - v2 */
+/* Mobile hamburger navigation - v3 */
 @media (max-width: 768px) {
   .navbar { min-height: 68px; padding: 10px 14px; gap: 10px; }
   .nav-title { font-size: 15px; line-height: 1.05; letter-spacing: 0.2px; flex: 1; min-width: 0; }
