@@ -48,7 +48,7 @@ function App() {
   return <div className="website">
     <nav className="navbar">
       <div className="nav-title">SAHAJ JAN SEVA KENDRA<span>& DIGITAL PHOTO STUDIO</span></div>
-      <div className="nav-links"><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <div className="nav-links"><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#social">Social Media</a></div>
       <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" className="nav-whatsapp">WhatsApp</a>
     </nav>
 
