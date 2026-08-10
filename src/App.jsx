@@ -43,6 +43,9 @@ function App() {
   const [search,setSearch] = useState("");
   const [category,setCategory] = useState("All");
   const [selectedPhoto,setSelectedPhoto] = useState(null);
+  const [enquiryName,setEnquiryName] = useState("");
+  const [enquiryMobile,setEnquiryMobile] = useState("");
+  const [enquiryService,setEnquiryService] = useState(services[0]?.name || "General Enquiry");
   const filteredServices = services.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) && (category === "All" || s.category === category));
 
   return <div className="website">
@@ -69,6 +72,33 @@ function App() {
       <section style={{padding:"28px 5%",background:"linear-gradient(90deg,#071d36,#102f54,#071d36)",borderTop:"1px solid rgba(255,211,78,.25)",borderBottom:"1px solid rgba(255,211,78,.25)"}}><div style={{maxWidth:1150,margin:"auto",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14}}>{[["⚡","Fast Service","तेज़ ऑनलाइन कार्य"],["🔒","Trusted Point","भरोसेमंद सेवा"],["💬","WhatsApp Apply","सीधे आवेदन करें"],["📞","Quick Support","Call / WhatsApp सहायता"]].map(([i,t,d])=><div key={t} style={{padding:"15px 18px",borderRadius:16,background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.1)",textAlign:"center"}}><div style={{fontSize:24}}>{i}</div><strong style={{display:"block",color:"#ffd34e",marginTop:5}}>{t}</strong><span style={{display:"block",color:"#d5dfeb",fontSize:12,marginTop:4}}>{d}</span></div>)}</div></section>
 
       <section style={{padding:"70px 5%",background:"#0a2341",color:"#fff"}}><div className="section-title"><p className="eyebrow">HOW IT WORKS</p><h2 style={{color:"#fff"}}>घर बैठे आवेदन करना अब आसान</h2><p style={{color:"#cbd9e8"}}>सिर्फ 3 आसान कदमों में अपनी सेवा के लिए संपर्क करें।</p></div><div style={{maxWidth:1050,margin:"auto",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:18}}>{[["01","सेवा चुनें","अपनी जरूरत की सेवा खोजें।"],["02","Apply Now दबाएँ","Service के साथ WhatsApp बटन पर क्लिक करें।"],["03","WhatsApp पर बात करें","Message पहले से तैयार मिलेगा और आप सीधे Rajdev ji से संपर्क कर पाएँगे।"]].map(([n,t,d])=><div key={n} style={{padding:25,borderRadius:20,background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,211,78,.22)"}}><div style={{width:48,height:48,borderRadius:14,background:"#ffd34e",color:"#071d36",display:"flex",alignItems:"center",justifyContent:"center",fontWeight:900}}>{n}</div><h3 style={{marginTop:18,color:"#ffd34e"}}>{t}</h3><p style={{marginTop:10,color:"#d7e2ee",lineHeight:1.7}}>{d}</p></div>)}</div></section>
+
+
+      {/* WHATSAPP ENQUIRY FORM V1 */}
+      <section id="whatsapp-enquiry" style={{padding:"70px 5%",background:"linear-gradient(135deg,#071d36,#102f54)",color:"#fff"}}>
+        <div style={{maxWidth:850,margin:"auto"}}>
+          <div className="section-title">
+            <p className="eyebrow">WHATSAPP ENQUIRY</p>
+            <h2 style={{color:"#fff"}}>सेवा के लिए सीधे WhatsApp पर पूछताछ करें</h2>
+            <p style={{color:"#cbd9e8"}}>नाम, मोबाइल नंबर और सेवा भरें — आपकी enquiry तैयार होकर WhatsApp पर खुल जाएगी।</p>
+          </div>
+          <form onSubmit={(e)=>{
+            e.preventDefault();
+            const message = `नमस्ते Rajdev ji, मुझे सेवा के बारे में जानकारी चाहिए।\n\nनाम: ${enquiryName}\nमोबाइल: ${enquiryMobile}\nसेवा: ${enquiryService}`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,"_blank","noopener,noreferrer");
+          }} style={{maxWidth:650,margin:"auto",padding:28,borderRadius:24,background:"rgba(255,255,255,.07)",border:"1px solid rgba(255,211,78,.28)",boxShadow:"0 20px 55px rgba(0,0,0,.25)"}}>
+            <label style={{display:"block",fontWeight:800,marginBottom:8}}>👤 ग्राहक का नाम</label>
+            <input required value={enquiryName} onChange={e=>setEnquiryName(e.target.value)} placeholder="अपना नाम लिखें" style={{width:"100%",padding:"14px 16px",marginBottom:18,borderRadius:12,border:"1px solid rgba(255,255,255,.2)",background:"rgba(255,255,255,.1)",color:"#fff",outline:"none"}} />
+            <label style={{display:"block",fontWeight:800,marginBottom:8}}>📱 मोबाइल नंबर</label>
+            <input required type="tel" inputMode="numeric" pattern="[0-9]{10}" maxLength="10" value={enquiryMobile} onChange={e=>setEnquiryMobile(e.target.value.replace(/\D/g,"").slice(0,10))} placeholder="10 अंकों का मोबाइल नंबर" style={{width:"100%",padding:"14px 16px",marginBottom:18,borderRadius:12,border:"1px solid rgba(255,255,255,.2)",background:"rgba(255,255,255,.1)",color:"#fff",outline:"none"}} />
+            <label style={{display:"block",fontWeight:800,marginBottom:8}}>🛠️ सेवा चुनें</label>
+            <select required value={enquiryService} onChange={e=>setEnquiryService(e.target.value)} style={{width:"100%",padding:"14px 16px",marginBottom:22,borderRadius:12,border:"1px solid rgba(255,255,255,.2)",background:"#102f54",color:"#fff",outline:"none"}}>
+              {services.map((s)=><option key={`${s.category}-${s.name}`} value={s.name}>{s.name}</option>)}
+            </select>
+            <button type="submit" className="btn whatsapp" style={{width:"100%",border:0,cursor:"pointer",fontSize:16}}>💬 WhatsApp पर Enquiry भेजें</button>
+          </form>
+        </div>
+      </section>
 
       <section className="services" id="services"><div className="section-title"><p className="eyebrow">OUR SERVICES</p><h2>सभी सेवाएँ एक ही स्थान पर</h2><p>सरकारी, डिजिटल, प्रिंटिंग एवं फोटोग्राफी सेवाओं के लिए आज ही संपर्क करें।</p></div><div className="service-search"><input type="text" placeholder="🔍 Search Service... जैसे PAN, Photo, Wedding" value={search} onChange={e=>setSearch(e.target.value)}/></div><div className="category-buttons">{categories.map(item=><button key={item} className={category===item?"active":""} onClick={()=>setCategory(item)}>{item}</button>)}</div><p className="service-count">{filteredServices.length} Services Available</p><div className="service-grid">{filteredServices.map((s,i)=><div className="service-card" key={`${s.category}-${s.name}`}><span className="service-number">{String(i+1).padStart(2,"0")}</span><div style={{flex:1}}><h3>{s.name}</h3><p>{s.category} Service</p><a href={whatsappLink(s)} target="_blank" rel="noreferrer" className="btn whatsapp" style={{display:"inline-block",padding:"9px 13px",marginTop:10,fontSize:12,borderRadius:8}}>💬 Apply Now → WhatsApp</a></div></div>)}</div></section>
 
