@@ -1,142 +1,22 @@
-/* Mobile hamburger navigation */
+/* Mobile hamburger navigation - v2 */
 @media (max-width: 768px) {
-  .navbar {
-    min-height: 68px;
-    padding: 10px 14px;
-    gap: 10px;
-  }
-
-  .nav-title {
-    font-size: 15px;
-    line-height: 1.05;
-    letter-spacing: 0.2px;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .nav-title span {
-    font-size: 8px;
-    margin-top: 3px;
-    letter-spacing: 1px;
-  }
-
-  .nav-whatsapp {
-    padding: 9px 12px;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-
-  /* The Home link becomes the hamburger toggle on small screens. */
-  .nav-links {
-    position: relative;
-    width: 46px;
-    min-width: 46px;
-    height: 44px;
-    margin-left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 0;
-    z-index: 10001;
-  }
-
-  .nav-links a {
-    display: none;
-    width: 100%;
-    padding: 13px 16px;
-    background: rgba(5, 15, 31, 0.98);
-    border-bottom: 1px solid rgba(255, 211, 78, 0.14);
-    color: #fff;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-
-  .nav-links a:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 44px;
-    padding: 0;
-    border: 1px solid rgba(255, 211, 78, 0.55);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    font-size: 0;
-  }
-
-  .nav-links a:first-child::before {
-    content: "☰";
-    color: #ffd34e;
-    font-size: 25px;
-    line-height: 1;
-  }
-
-  .nav-links a::after {
-    display: none;
-  }
-
-  /* Tap/focus the hamburger to open the menu. Tapping outside closes it. */
-  .nav-links:focus-within {
-    position: absolute;
-    top: 62px;
-    right: 14px;
-    width: min(250px, calc(100vw - 28px));
-    height: auto;
-    padding: 6px;
-    border-radius: 16px;
-    background: rgba(5, 15, 31, 0.98);
-    border: 1px solid rgba(255, 211, 78, 0.45);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  }
-
-  .nav-links:focus-within a {
-    display: flex;
-    align-items: center;
-  }
-
-  .nav-links:focus-within a:first-child {
-    width: 100%;
-    height: auto;
-    min-height: 42px;
-    justify-content: flex-start;
-    padding: 11px 14px;
-    border: 0;
-    border-radius: 10px;
-    background: transparent;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .nav-links:focus-within a:first-child::before {
-    content: "✕";
-    font-size: 19px;
-    margin-right: 10px;
-  }
-
-  .nav-links:focus-within a:hover,
-  .nav-links:focus-within a:focus {
-    color: #ffd34e;
-    background: rgba(255, 211, 78, 0.08);
-    border-radius: 10px;
-    outline: none;
-  }
+  .navbar { min-height: 68px; padding: 10px 14px; gap: 10px; }
+  .nav-title { font-size: 15px; line-height: 1.05; letter-spacing: 0.2px; flex: 1; min-width: 0; }
+  .nav-title span { font-size: 8px; margin-top: 3px; letter-spacing: 1px; }
+  .nav-whatsapp { padding: 9px 12px; font-size: 12px; white-space: nowrap; }
+  .nav-links { position: relative; width: 46px; min-width: 46px; height: 44px; margin-left: 0; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; z-index: 10001; }
+  .nav-links a { display: none; width: 100%; padding: 13px 16px; background: rgba(5,15,31,.98); border-bottom: 1px solid rgba(255,211,78,.14); color: #fff; font-size: 14px; white-space: nowrap; }
+  .nav-links a:first-child { display: flex; align-items: center; justify-content: center; width: 46px; height: 44px; padding: 0; border: 1px solid rgba(255,211,78,.55); border-radius: 12px; background: rgba(255,255,255,.06); font-size: 0; }
+  .nav-links a:first-child::before { content: "☰"; color: #ffd34e; font-size: 25px; line-height: 1; }
+  .nav-links a::after { display: none; }
+  .nav-links:focus-within { position: absolute; top: 62px; right: 14px; width: min(250px, calc(100vw - 28px)); height: auto; padding: 6px; border-radius: 16px; background: rgba(5,15,31,.98); border: 1px solid rgba(255,211,78,.45); box-shadow: 0 20px 45px rgba(0,0,0,.45); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+  .nav-links:focus-within a { display: flex; align-items: center; }
+  .nav-links:focus-within a:first-child { width: 100%; height: auto; min-height: 42px; justify-content: flex-start; padding: 11px 14px; border: 0; border-radius: 10px; background: transparent; font-size: 14px; font-weight: 700; }
+  .nav-links:focus-within a:first-child::before { content: "✕"; font-size: 19px; margin-right: 10px; }
+  .nav-links:focus-within a:hover, .nav-links:focus-within a:focus { color: #ffd34e; background: rgba(255,211,78,.08); border-radius: 10px; outline: none; }
 }
-
 @media (max-width: 430px) {
-  .nav-title {
-    font-size: 13px;
-  }
-
-  .nav-title span {
-    font-size: 7px;
-    letter-spacing: 0.7px;
-  }
-
-  .nav-whatsapp {
-    padding: 8px 10px;
-    font-size: 11px;
-  }
+  .nav-title { font-size: 13px; }
+  .nav-title span { font-size: 7px; letter-spacing: .7px; }
+  .nav-whatsapp { padding: 8px 10px; font-size: 11px; }
 }
