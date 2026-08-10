@@ -1,0 +1,25 @@
+/* Customer Experience section */
+.contact::before {
+  content: "⭐ CUSTOMER EXPERIENCE\\A\\A आपकी सेवा का अनुभव हमारे लिए महत्वपूर्ण है।\\A\\A अपनी सेवा पूरी होने के बाद अपना ईमानदार अनुभव WhatsApp पर साझा करें।";
+  white-space: pre-wrap;
+  display: block;
+  max-width: 1050px;
+  margin: 0 auto 45px;
+  padding: 34px 28px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #071d36, #102f54);
+  border: 1px solid #dcae32;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  color: #dce8f5;
+  font-size: 17px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .contact::before {
+    margin-bottom: 30px;
+    padding: 26px 18px;
+    font-size: 15px;
+  }
+}
