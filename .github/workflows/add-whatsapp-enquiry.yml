@@ -1,0 +1,59 @@
+name: Add WhatsApp Enquiry Form
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  add-enquiry-form:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add WhatsApp enquiry form
+        shell: python
+        run: |
+          from pathlib import Path
+
+          app = Path('src/App.jsx')
+          css = Path('src/App.css')
+          text = app.read_text(encoding='utf-8')
+
+          marker = '/* WHATSAPP ENQUIRY FORM V1 */'
+          if marker not in text:
+              old_state = '  const [selectedPhoto,setSelectedPhoto] = useState(null);'
+              new_state = '''  const [selectedPhoto,setSelectedPhoto] = useState(null);\n  const [enquiryName,setEnquiryName] = useState(\"\");\n  const [enquiryMobile,setEnquiryMobile] = useState(\"\");\n  const [enquiryService,setEnquiryService] = useState(services[0]?.name || \"General Enquiry\");'''
+              if old_state not in text:
+                  raise SystemExit('Could not find App state marker')
+              text = text.replace(old_state, new_state, 1)
+
+              section = '''\n      {/* WHATSAPP ENQUIRY FORM V1 */}\n      <section id=\"whatsapp-enquiry\" style={{padding:\"70px 5%\",background:\"linear-gradient(135deg,#071d36,#102f54)\",color:\"#fff\"}}>\n        <div style={{maxWidth:850,margin:\"auto\"}}>\n          <div className=\"section-title\">\n            <p className=\"eyebrow\">WHATSAPP ENQUIRY</p>\n            <h2 style={{color:\"#fff\"}}>सेवा के लिए सीधे WhatsApp पर पूछताछ करें</h2>\n            <p style={{color:\"#cbd9e8\"}}>नाम, मोबाइल नंबर और सेवा भरें — आपकी enquiry तैयार होकर WhatsApp पर खुल जाएगी।</p>\n          </div>\n          <form onSubmit={(e)=>{\n            e.preventDefault();\n            const message = `नमस्ते Rajdev ji, मुझे सेवा के बारे में जानकारी चाहिए।\\n\\nनाम: ${enquiryName}\\nमोबाइल: ${enquiryMobile}\\nसेवा: ${enquiryService}`;\n            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,\"_blank\",\"noopener,noreferrer\");\n          }} style={{maxWidth:650,margin:\"auto\",padding:28,borderRadius:24,background:\"rgba(255,255,255,.07)\",border:\"1px solid rgba(255,211,78,.28)\",boxShadow:\"0 20px 55px rgba(0,0,0,.25)\"}}>\n            <label style={{display:\"block\",fontWeight:800,marginBottom:8}}>👤 ग्राहक का नाम</label>\n            <input required value={enquiryName} onChange={e=>setEnquiryName(e.target.value)} placeholder=\"अपना नाम लिखें\" style={{width:\"100%\",padding:\"14px 16px\",marginBottom:18,borderRadius:12,border:\"1px solid rgba(255,255,255,.2)\",background:\"rgba(255,255,255,.1)\",color:\"#fff\",outline:\"none\"}} />\n            <label style={{display:\"block\",fontWeight:800,marginBottom:8}}>📱 मोबाइल नंबर</label>\n            <input required type=\"tel\" inputMode=\"numeric\" pattern=\"[0-9]{10}\" maxLength=\"10\" value={enquiryMobile} onChange={e=>setEnquiryMobile(e.target.value.replace(/\\D/g,\"\").slice(0,10))} placeholder=\"10 अंकों का मोबाइल नंबर\" style={{width:\"100%\",padding:\"14px 16px\",marginBottom:18,borderRadius:12,border:\"1px solid rgba(255,255,255,.2)\",background:\"rgba(255,255,255,.1)\",color:\"#fff\",outline:\"none\"}} />\n            <label style={{display:\"block\",fontWeight:800,marginBottom:8}}>🛠️ सेवा चुनें</label>\n            <select required value={enquiryService} onChange={e=>setEnquiryService(e.target.value)} style={{width:\"100%\",padding:\"14px 16px\",marginBottom:22,borderRadius:12,border:\"1px solid rgba(255,255,255,.2)\",background:\"#102f54\",color:\"#fff\",outline:\"none\"}}>\n              {services.map((s)=><option key={`${s.category}-${s.name}`} value={s.name}>{s.name}</option>)}\n            </select>\n            <button type=\"submit\" className=\"btn whatsapp\" style={{width:\"100%\",border:0,cursor:\"pointer\",fontSize:16}}>💬 WhatsApp पर Enquiry भेजें</button>\n          </form>\n        </div>\n      </section>\n'''
+              anchor = '      <section className="services" id="services">'
+              if anchor not in text:
+                  raise SystemExit('Could not find services section marker')
+              text = text.replace(anchor, section + '\n' + anchor, 1)
+              app.write_text(text, encoding='utf-8')
+
+          css_marker = '/* WHATSAPP ENQUIRY FORM V1 */'
+          css_text = css.read_text(encoding='utf-8')
+          if css_marker not in css_text:
+              css_text += '''\n\n/* WHATSAPP ENQUIRY FORM V1 */\n#whatsapp-enquiry input::placeholder { color: rgba(255,255,255,.65); }\n#whatsapp-enquiry input:focus, #whatsapp-enquiry select:focus { border-color: #ffd34e !important; box-shadow: 0 0 0 4px rgba(255,211,78,.12); }\n#whatsapp-enquiry select option { background: #102f54; color: #fff; }\n@media (max-width: 600px) {\n  #whatsapp-enquiry { padding: 55px 5% !important; }\n  #whatsapp-enquiry form { padding: 20px !important; }\n}\n'''
+              css.write_text(css_text, encoding='utf-8')
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx src/App.css
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git commit -m "Add WhatsApp enquiry form [skip ci]"
+          git push
