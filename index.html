@@ -40,6 +40,28 @@
         body > a[aria-label="Passport Photo Maker"] span:nth-child(4){margin-top:6px!important;padding:5px 9px!important;font-size:9px!important}
       }
     </style>
+    <script>
+      // Performance: lazy-load gallery/service photos and decode them off the main thread.
+      const optimizeImages = (root = document) => {
+        const images = root.querySelectorAll ? root.querySelectorAll('img') : [];
+        images.forEach((img, index) => {
+          if (!img.hasAttribute('loading')) img.loading = index === 0 ? 'eager' : 'lazy';
+          if (!img.hasAttribute('decoding')) img.decoding = 'async';
+          if (index === 0 && !img.hasAttribute('fetchpriority')) img.fetchPriority = 'high';
+        });
+      };
+      optimizeImages();
+      new MutationObserver(mutations => {
+        for (const mutation of mutations) {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === 1) {
+              if (node.tagName === 'IMG') optimizeImages(node.parentNode || document);
+              else optimizeImages(node);
+            }
+          });
+        }
+      }).observe(document.getElementById('root'), {childList:true, subtree:true});
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
