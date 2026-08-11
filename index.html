@@ -60,8 +60,24 @@
         body > a[aria-label="Passport Photo Maker"] span:nth-child(4){margin-top:6px!important;padding:5px 9px!important;font-size:9px!important}
       }
     </style>
+
+    <a href="/instant-service.html" aria-label="Instant Service" style="position:fixed;right:16px;bottom:190px;z-index:100000;width:190px;padding:13px 14px;border-radius:18px;text-decoration:none;text-align:center;background:linear-gradient(145deg,#0d3d63,#071d36);color:#fff;border:2px solid #ffd34e;box-shadow:0 12px 32px rgba(0,0,0,.42),0 0 18px rgba(255,211,78,.22);font-family:Arial,sans-serif;">
+      <span style="display:block;font-size:25px;line-height:1;margin-bottom:6px;">⚡</span>
+      <span style="display:block;color:#ffd34e;font-size:15px;font-weight:900;">INSTANT SERVICE</span>
+      <span style="display:block;margin-top:4px;color:#cbd9e8;font-size:11px;font-weight:700;">DL PDF & Quick Services</span>
+      <span style="display:inline-block;margin-top:9px;background:#ffd34e;color:#071d36;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:900;">OPEN TAB →</span>
+    </a>
+    <style>
+      @media (max-width:600px){
+        body > a[aria-label="Instant Service"]{right:10px!important;bottom:248px!important;width:158px!important;padding:10px!important;border-radius:15px!important}
+        body > a[aria-label="Instant Service"] span:first-child{font-size:21px!important;margin-bottom:4px!important}
+        body > a[aria-label="Instant Service"] span:nth-child(2){font-size:12px!important}
+        body > a[aria-label="Instant Service"] span:nth-child(3){font-size:9px!important}
+        body > a[aria-label="Instant Service"] span:nth-child(4){margin-top:6px!important;padding:5px 9px!important;font-size:9px!important}
+      }
+    </style>
+
     <script>
-      // Performance: lazy-load gallery/service photos and decode them off the main thread.
       const optimizeImages = (root = document) => {
         const images = root.querySelectorAll ? root.querySelectorAll('img') : [];
         images.forEach((img, index) => {
