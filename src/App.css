@@ -109,3 +109,13 @@ a { text-decoration: none; }
 #whatsapp-enquiry input:focus, #whatsapp-enquiry select:focus { border-color: #ffd34e !important; box-shadow: 0 0 0 4px rgba(255,211,78,.12); }
 #whatsapp-enquiry select option { background: #102f54; color: #fff; }
 @media (max-width: 600px) { #whatsapp-enquiry { padding: 55px 5% !important; } #whatsapp-enquiry form { padding: 20px !important; } }
+
+
+/* WHATSAPP ENQUIRY FORM V1 */
+#whatsapp-enquiry input::placeholder { color: rgba(255,255,255,.65); }
+#whatsapp-enquiry input:focus, #whatsapp-enquiry select:focus { border-color: #ffd34e !important; box-shadow: 0 0 0 4px rgba(255,211,78,.12); }
+#whatsapp-enquiry select option { background: #102f54; color: #fff; }
+@media (max-width: 600px) {
+  #whatsapp-enquiry { padding: 55px 5% !important; }
+  #whatsapp-enquiry form { padding: 20px !important; }
+}
