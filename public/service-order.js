@@ -56,7 +56,8 @@
     .service-official-link{display:inline-block;margin-top:10px;padding:9px 13px;border-radius:8px;background:rgba(255,211,78,.12);border:1px solid rgba(255,211,78,.45);color:#ffd34e;text-decoration:none;font-size:12px;font-weight:900}
     .service-clickable-title{cursor:pointer;text-decoration:underline;text-decoration-color:rgba(255,211,78,.45);text-underline-offset:4px}
     .service-live-banner{margin:0 auto 22px;max-width:1150px;padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(32,214,111,.12),rgba(255,211,78,.08));border:1px solid rgba(255,211,78,.3);color:#fff}.service-live-banner strong{color:#ffd34e}
-    @media(max-width:600px){.service-order-modal{padding:18px}.service-order-title{font-size:21px}}
+    .photo-ai-banner{margin:0 auto 22px;max-width:1150px;padding:22px;border-radius:20px;background:linear-gradient(135deg,#102f54,#071d36);border:1px solid rgba(255,211,78,.38);box-shadow:0 16px 45px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:space-between;gap:18px;color:#fff}.photo-ai-banner h3{margin:0 0 5px;color:#ffd34e;font-size:20px}.photo-ai-banner p{margin:0;color:#cbd9e8;font-size:13px;line-height:1.55}.photo-ai-open{display:inline-block;flex:0 0 auto;text-decoration:none;background:#ffd34e;color:#071d36;border-radius:12px;padding:12px 16px;font-weight:900;font-size:13px}.photo-ai-mini{font-size:11px;color:#8fa6bc;margin-top:7px}
+    @media(max-width:600px){.service-order-modal{padding:18px}.service-order-title{font-size:21px}.photo-ai-banner{padding:17px;display:block}.photo-ai-banner h3{font-size:17px}.photo-ai-open{display:block;text-align:center;margin-top:13px}}
   `;
   document.head.appendChild(style);
 
@@ -169,7 +170,17 @@
     title?.insertAdjacentElement('afterend',banner);
   }
 
-  const observer=new MutationObserver(()=>{attach(document);addLiveBanner();});
+  function addPhotoToolBanner(){
+    const services=document.querySelector('.services');
+    if(!services || services.querySelector('.photo-ai-banner')) return;
+    const banner=document.createElement('div');
+    banner.className='photo-ai-banner';
+    banner.innerHTML='<div><h3>✨ AI Photo Background Remover</h3><p>Remove.bg जैसी आसान photo editing — background हटाएँ, Transparent / White / Blue / Custom background लगाएँ और photo download करें।</p><div class="photo-ai-mini">📱 Mobile Friendly • 🪄 AI Background Removal • 🔒 Browser-based processing</div></div><a class="photo-ai-open" href="/ai-photo-background.html">OPEN AI PHOTO TOOL →</a>';
+    const live=services.querySelector('.service-live-banner');
+    (live || services.querySelector('.section-title'))?.insertAdjacentElement('afterend',banner);
+  }
+
+  const observer=new MutationObserver(()=>{attach(document);addLiveBanner();addPhotoToolBanner();});
   observer.observe(document.getElementById('root') || document.body,{childList:true,subtree:true});
-  setTimeout(()=>{attach(document);addLiveBanner();},400);
+  setTimeout(()=>{attach(document);addLiveBanner();addPhotoToolBanner();},400);
 })();
