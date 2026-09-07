@@ -9,7 +9,7 @@
     'RC / Vehicle Services': 'RC और vehicle related online assistance.'
   };
 
-  // Official government portals for the main services shown on the website.
+  // Official portals only. Birth/Death Certificate use the Civil Registration System.
   const OFFICIAL_LINKS = {
     'Aadhaar Services': 'https://myaadhaar.uidai.gov.in/',
     'Aadhaar Print': 'https://myaadhaar.uidai.gov.in/',
@@ -26,8 +26,8 @@
     'Income Certificate': 'https://edistrict.up.gov.in/',
     'Caste Certificate': 'https://edistrict.up.gov.in/',
     'Residence Certificate': 'https://edistrict.up.gov.in/',
-    'Birth Certificate': 'https://edistrict.up.gov.in/',
-    'Death Certificate': 'https://edistrict.up.gov.in/',
+    'Birth Certificate': 'https://crsorgi.gov.in/',
+    'Death Certificate': 'https://crsorgi.gov.in/',
     'Family ID / Family Register': 'https://familyid.up.gov.in/',
     'Old Age Pension': 'https://sspy-up.gov.in/',
     'Widow Pension': 'https://sspy-up.gov.in/',
