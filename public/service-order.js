@@ -9,6 +9,40 @@
     'RC / Vehicle Services': 'RC और vehicle related online assistance.'
   };
 
+  // Official government portals for the main services shown on the website.
+  const OFFICIAL_LINKS = {
+    'Aadhaar Services': 'https://myaadhaar.uidai.gov.in/',
+    'Aadhaar Print': 'https://myaadhaar.uidai.gov.in/',
+    'PAN Card': 'https://www.incometax.gov.in/iec/foportal/',
+    'Voter ID': 'https://voters.eci.gov.in/',
+    'Driving Licence': 'https://parivahan.gov.in/',
+    'RC / Vehicle Services': 'https://parivahan.gov.in/',
+    'Ayushman Card': 'https://beneficiary.nha.gov.in/',
+    'e-Shram Card': 'https://eshram.gov.in/',
+    'Farmer Registry': 'https://agristack.gov.in/',
+    'PM Kisan': 'https://pmkisan.gov.in/',
+    'PM Awas Yojana': 'https://pmayg.nic.in/',
+    'Ration Card': 'https://fcs.up.gov.in/',
+    'Income Certificate': 'https://edistrict.up.gov.in/',
+    'Caste Certificate': 'https://edistrict.up.gov.in/',
+    'Residence Certificate': 'https://edistrict.up.gov.in/',
+    'Birth Certificate': 'https://edistrict.up.gov.in/',
+    'Death Certificate': 'https://edistrict.up.gov.in/',
+    'Family ID / Family Register': 'https://familyid.up.gov.in/',
+    'Old Age Pension': 'https://sspy-up.gov.in/',
+    'Widow Pension': 'https://sspy-up.gov.in/',
+    'Disability Pension': 'https://sspy-up.gov.in/',
+    'Kanya Sumangala Yojana': 'https://mksy.up.gov.in/',
+    'Scholarship Forms': 'https://scholarship.up.gov.in/',
+    'Government Job Forms': 'https://upsssc.gov.in/',
+    'Railway Ticket Booking': 'https://www.irctc.co.in/',
+    'Electricity Bill Payment': 'https://www.uppclonline.com/',
+    'GST Registration': 'https://www.gst.gov.in/',
+    'PF Services': 'https://unifiedportal-mem.epfindia.gov.in/',
+    'Passport Application Assistance': 'https://www.passportindia.gov.in/',
+    'Police Verification Assistance': 'https://uppolice.gov.in/'
+  };
+
   const style = document.createElement('style');
   style.textContent = `
     .service-order-overlay{position:fixed;inset:0;z-index:100000;background:rgba(1,8,18,.82);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:16px}
@@ -19,6 +53,8 @@
     .service-order-label{display:block;font-weight:800;margin:13px 0 7px}.service-order-input,.service-order-select,.service-order-textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;outline:none;font-size:14px}.service-order-select option{background:#102f54;color:#fff}.service-order-textarea{min-height:82px;resize:vertical}
     .service-order-submit{width:100%;margin-top:18px;border:0;border-radius:13px;padding:14px;background:#20d66f;color:#062414;font-weight:900;font-size:16px;cursor:pointer}.service-order-note{font-size:12px;color:#aebfd0;line-height:1.55;margin-top:12px}.service-order-success{display:none;margin-top:14px;padding:13px;border-radius:12px;background:rgba(32,214,111,.12);border:1px solid rgba(32,214,111,.4);color:#dfffea;font-size:13px;line-height:1.55}
     .service-order-doc{margin-top:10px;padding:11px;border:1px dashed rgba(255,211,78,.45);border-radius:12px;color:#cbd9e8;font-size:12px}
+    .service-official-link{display:inline-block;margin-top:10px;padding:9px 13px;border-radius:8px;background:rgba(255,211,78,.12);border:1px solid rgba(255,211,78,.45);color:#ffd34e;text-decoration:none;font-size:12px;font-weight:900}
+    .service-clickable-title{cursor:pointer;text-decoration:underline;text-decoration-color:rgba(255,211,78,.45);text-underline-offset:4px}
     .service-live-banner{margin:0 auto 22px;max-width:1150px;padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(32,214,111,.12),rgba(255,211,78,.08));border:1px solid rgba(255,211,78,.3);color:#fff}.service-live-banner strong{color:#ffd34e}
     @media(max-width:600px){.service-order-modal{padding:18px}.service-order-title{font-size:21px}}
   `;
@@ -83,6 +119,34 @@
   });
 
   function attach(root=document){
+    root.querySelectorAll?.('.service-card').forEach(card=>{
+      const h=card.querySelector('h3');
+      if(!h || h.dataset.officialAttached==='1') return;
+      const service=h.textContent.trim();
+      h.dataset.officialAttached='1';
+
+      const officialUrl=OFFICIAL_LINKS[service];
+      if(officialUrl){
+        h.classList.add('service-clickable-title');
+        h.title='Official Government Portal खोलें';
+        h.addEventListener('click', e=>{
+          e.preventDefault();
+          e.stopPropagation();
+          window.open(officialUrl,'_blank','noopener,noreferrer');
+        });
+
+        const link=document.createElement('a');
+        link.className='service-official-link';
+        link.href=officialUrl;
+        link.target='_blank';
+        link.rel='noopener noreferrer';
+        link.textContent='🏛️ Official Website →';
+        link.addEventListener('click',e=>e.stopPropagation());
+        const actions=card.querySelector('a.btn.whatsapp');
+        (actions?.parentElement || card).appendChild(link);
+      }
+    });
+
     root.querySelectorAll?.('.service-card a.btn.whatsapp').forEach(a=>{
       if(a.dataset.serviceOrderAttached==='1') return;
       a.dataset.serviceOrderAttached='1';
